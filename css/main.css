@@ -7,13 +7,13 @@
 .player {
     position: absolute;
     background-color: yellowgreen;
-    height: 20px; 
-    width: 100px;
+    /* height: 20px; 
+    width: 100px; */
 }
 
 .obstacle {
     position: absolute;
     background-color: maroon;
-    height:50px; 
-    width: 120px;
+    /* height:50px; 
+    width: 120px; */
 }
