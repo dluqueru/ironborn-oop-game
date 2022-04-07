@@ -1,6 +1,8 @@
 class Game {
     constructor(create, draw){
-        this.player = null
+        this.time = 0;
+        this.player = null;
+        this.obstacles = [];
         this.create = create;
         this.draw = draw;
     }
@@ -15,12 +17,27 @@ class Game {
         this.draw(this.obstacle);
         
         setInterval(() => {
-            this.draw(this.obstacle);
-            this.obstacle.moveDown();
+            this.obstacles.forEach((obstacle) => {
+                obstacle.moveDown();
+                this.draw(obstacle);
+            });
+
+            if(this.time %40 === 0){
+                const newObstacle = new Obstacle();
+                newObstacle.domElement = this.create('obstacle');
+                this.obstacles.push(newObstacle);
+                
+                
+            }
+            this.time++;
         }, 50)
         
         
         
+    }
+
+    moveObstacle(){
+
     }
 
     movePlayer(direction){
