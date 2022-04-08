@@ -21,24 +21,24 @@ class Game {
                 obstacle.moveDown();
                 this.draw(obstacle);
                 this.detectCollision(obstacle);
+                this.detectObstacleOutside(obstacle);
             });
 
-            if(this.time %40 === 0){
+            if(this.time %10 === 0){
                 const newObstacle = new Obstacle();
                 newObstacle.domElement = this.create('obstacle');
                 this.obstacles.push(newObstacle);
-                
-                
             }
             this.time++;
         }, 30);
         
-        
-        
     }
 
-    moveObstacle(){
-
+    detectObstacleOutside(obstacle){
+        if(obstacle.positionY < 0){
+            obstacle.domElement.remove();
+            this.obstacles.shift();
+        }
     }
 
     detectCollision(obstacle){
@@ -65,8 +65,8 @@ class Player {
     constructor(){
         this.positionX = 45;
         this.positionY = 0;
-        this.width = 10;
-        this.height = 10;
+        this.width = 3;
+        this.height = 5;
         this.domElement = 0;
     }
 
